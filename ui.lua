@@ -528,7 +528,7 @@ function UILibrary:LoadWindow(Title, Size)
 
 		AddConnection(CConnect(TextButton.MouseEnter, function()
 			if (SelectedPage.Name ~= TextButton.Name) then
-				Utils.Tween(TextButton, "Quad", "Out", .25, {
+				Utils.Tween(TextButton, "Quad", "Out", .9, {
 					TextColor3 = Colors.PageTextHover;
 					BackgroundColor3 = Colors.PageBackgroundHover;
 					BorderColor3 = Colors.PageBorderHover;
@@ -538,7 +538,7 @@ function UILibrary:LoadWindow(Title, Size)
 
 		AddConnection(CConnect(TextButton.MouseLeave, function()
 			if (SelectedPage.Name ~= TextButton.Name) then
-				Utils.Tween(TextButton, "Quad", "Out", .25, {
+				Utils.Tween(TextButton, "Quad", "Out", .9, {
 					TextColor3 = Colors.PageTextIdle;
 					BackgroundColor3 = Colors.PageBackgroundIdle;
 					BorderColor3 = Colors.PageBackgroundIdle;
@@ -548,7 +548,7 @@ function UILibrary:LoadWindow(Title, Size)
 
 		AddConnection(CConnect(TextButton.MouseButton1Down, function()
 			if (SelectedPage.Name ~= TextButton.Name) then
-				Utils.Tween(TextButton, "Quad", "Out", .25, {
+				Utils.Tween(TextButton, "Quad", "Out", .9, {
 					TextColor3 = Colors.PageTextPressed;
 				});
 			end
@@ -556,13 +556,13 @@ function UILibrary:LoadWindow(Title, Size)
 
 		AddConnection(CConnect(TextButton.MouseButton1Click, function()
 			if (SelectedPage.Name ~= TextButton.Name) then
-				Utils.Tween(TextButton, "Quad", "Out", .25, {
+				Utils.Tween(TextButton, "Quad", "Out", .9, {
 					TextColor3 = Colors.PageTextPressed;
 					BackgroundColor3 = Colors.PageBackgroundPressed;
 					BorderColor3 = Colors.PageBorderPressed;
 				});
 
-				Utils.Tween(Window.Main.Selection[SelectedPage.Name], "Quad", "Out", .25, {
+				Utils.Tween(Window.Main.Selection[SelectedPage.Name], "Quad", "Out", .9, {
 					TextColor3 = Colors.PageTextIdle;
 					BackgroundColor3 = Colors.PageBackgroundIdle;
 					BorderColor3 = Colors.PageBackgroundIdle;
@@ -617,7 +617,7 @@ function UILibrary:LoadWindow(Title, Size)
 					Utils.Tween(Switch, "Quad", "Out", .25, {
 						Position = Enabled and UDim2.new(1, -18, 0, 2) or UDim2.fromOffset(2, 2)
 					});
-					Utils.Tween(Container, "Quad", "Out", .25, {
+					Utils.Tween(Container, "Quad", "Out", .9, {
 						BackgroundColor3 = Enabled and self.ColorTheme or Colors.ElementBackground
 					});
 
