@@ -337,18 +337,18 @@ Utils.TweenTrans = function(Object, Transparency)
 		if (IsA(Instance_, "GuiObject")) then
 			for Class, Property in next, Properties do
 				if (IsA(Instance_, Class) and Instance_[Property] ~= 1) then
-					Utils.Tween(Instance_, "Quad", "Out", .5, {
+					Utils.Tween(Instance_, "Quad", "Out", .9, {
 						[Property] = Transparency
 					});
 					break
 				end
 			end
 			if Instance_.Name == "Overlay" and Transparency == 0 then -- check for overlay
-				Utils.Tween(Object, "Quad", "Out", .5, {
-					BackgroundTransparency = .20
+				Utils.Tween(Object, "Quad", "Out", .9, {
+					BackgroundTransparency = .9
 				});
 			elseif (Instance_.BackgroundTransparency ~= 1) then
-				Utils.Tween(Instance_, "Quad", "Out", .5, {
+				Utils.Tween(Instance_, "Quad", "Out", .9, {
 					BackgroundTransparency = Transparency
 				});
 			end
