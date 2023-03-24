@@ -381,14 +381,14 @@ Utils.Intro = function(Object)
 	if (Object.Visible) then
 		Frame.BackgroundTransparency = 1
 
-		local Tween = Utils.Tween(Frame, "Quad", "Out", .25, {
+		local Tween = Utils.Tween(Frame, "Quad", "Out", .9, {
 			BackgroundTransparency = 0
 		});
 
         CWait(Tween.Completed);
 		Object.Visible = false
 
-		local Tween = Utils.Tween(Frame, "Quad", "Out", .25, {
+		local Tween = Utils.Tween(Frame, "Quad", "Out", .9, {
 			Size = UDim2.fromOffset(0, 0);
 		});
 
@@ -403,7 +403,7 @@ Utils.Intro = function(Object)
 		Frame.Size = UDim2.fromOffset(0, 0)
 		UICorner.CornerRadius = UDimnew(1, 0)
 
-		local Tween = Utils.Tween(Frame, "Quad", "Out", .25, {
+		local Tween = Utils.Tween(Frame, "Quad", "Out", .9, {
 			Size = UDim2.fromOffset(Object.AbsoluteSize.X, Object.AbsoluteSize.Y);
 		});
 
@@ -614,7 +614,7 @@ function UILibrary:LoadWindow(Title, Size)
 				AddConnection(CConnect(Hitbox.MouseButton1Click, function()
 					Enabled = not Enabled
 
-					Utils.Tween(Switch, "Quad", "Out", .25, {
+					Utils.Tween(Switch, "Quad", "Out", .9, {
 						Position = Enabled and UDim2.new(1, -18, 0, 2) or UDim2.fromOffset(2, 2)
 					});
 					Utils.Tween(Container, "Quad", "Out", .9, {
@@ -690,8 +690,8 @@ function UILibrary:LoadWindow(Title, Size)
 						Moving = false
 
 						Utils.Tween(Label, "Quad", "Out", .9, {
-							BackgroundTransparency = 1;
-							TextTransparency = 1;
+							BackgroundTransparency = 0.9;
+							TextTransparency = 0.9;
 						});
 					end
 				end));
