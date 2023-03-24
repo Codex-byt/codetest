@@ -355,7 +355,7 @@ Utils.TweenTrans = function(Object, Transparency)
 		end
 	end
 
-	return Utils.Tween(Object, "Quad", "Out", .5, {
+	return Utils.Tween(Object, "Quad", "Out", .9, {
 		BackgroundTransparency = Transparency
 	});
 end
@@ -407,14 +407,14 @@ Utils.Intro = function(Object)
 			Size = UDim2.fromOffset(Object.AbsoluteSize.X, Object.AbsoluteSize.Y);
 		});
 
-		Utils.Tween(UICorner, "Quad", "Out", .25, {
+		Utils.Tween(UICorner, "Quad", "Out", .9, {
 			CornerRadius = CornerRadius
 		});
 
 		CWait(Tween.Completed);
 		Object.Visible = true
 
-		local Tween = Utils.Tween(Frame, "Quad", "Out", .25, {
+		local Tween = Utils.Tween(Frame, "Quad", "Out", .9, {
 			BackgroundTransparency = 1
 		});
 
@@ -677,7 +677,7 @@ function UILibrary:LoadWindow(Title, Size)
 				AddConnection(CConnect(Hitbox.MouseButton1Down, function()
 					Moving = true
 
-					Utils.Tween(Label, "Quad", "Out", .7, {
+					Utils.Tween(Label, "Quad", "Out", .9, {
 						BackgroundTransparency = 0;
 						TextTransparency = 0;
 					});
@@ -689,7 +689,7 @@ function UILibrary:LoadWindow(Title, Size)
 					if (Input.UserInputType == Enum.UserInputType.MouseButton1 and Moving) then
 						Moving = false
 
-						Utils.Tween(Label, "Quad", "Out", 0.01, {
+						Utils.Tween(Label, "Quad", "Out", .9, {
 							BackgroundTransparency = 1;
 							TextTransparency = 1;
 						});
