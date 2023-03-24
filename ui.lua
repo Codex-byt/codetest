@@ -689,7 +689,7 @@ function UILibrary:LoadWindow(Title, Size)
 					if (Input.UserInputType == Enum.UserInputType.MouseButton1 and Moving) then
 						Moving = false
 
-						Utils.Tween(Label, "Quad", "Out", 1, {
+						Utils.Tween(Label, "Quad", "Out", 0.01, {
 							BackgroundTransparency = 1;
 							TextTransparency = 1;
 						});
