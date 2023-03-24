@@ -677,7 +677,7 @@ function UILibrary:LoadWindow(Title, Size)
 				AddConnection(CConnect(Hitbox.MouseButton1Down, function()
 					Moving = true
 
-					Utils.Tween(Label, "Quad", "Out", .25, {
+					Utils.Tween(Label, "Quad", "Out", .7, {
 						BackgroundTransparency = 0;
 						TextTransparency = 0;
 					});
