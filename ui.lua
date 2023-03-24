@@ -345,7 +345,7 @@ Utils.TweenTrans = function(Object, Transparency)
 			end
 			if Instance_.Name == "Overlay" and Transparency == 0 then -- check for overlay
 				Utils.Tween(Object, "Quad", "Out", .5, {
-					BackgroundTransparency = .5
+					BackgroundTransparency = .20
 				});
 			elseif (Instance_.BackgroundTransparency ~= 1) then
 				Utils.Tween(Instance_, "Quad", "Out", .5, {
