@@ -497,7 +497,7 @@ function UILibrary:LoadWindow(Title, Size)
 		if LeftWindow then
 			local Time = tick() - Timer
 			if Time >= 3 and not Idle then
-				Utils.TweenTrans(Window, 1);
+				Utils.TweenTrans(Window, .99);
 				Idle = true
 			end
 		end
