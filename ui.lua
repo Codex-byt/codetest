@@ -302,7 +302,7 @@ Utils.Hover = function(Object, Goal)
 	end));
 
 	AddConnection(CConnect(Object.MouseLeave, function()
-		Utils.Tween(Object, "Sine", "Out", .5, Origin);
+		Utils.Tween(Object, "Sine", "Out", .1, Origin);
 	end));
 end
 
