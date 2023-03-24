@@ -3,72 +3,72 @@ local cloneref = cloneref or function(ref)
 end
 local GetService = game.GetService
 local Services = setmetatable({}, {
-    __index = function(self, Property)
-        local Good, Service = pcall(GetService, game, Property);
-        if (Good) then
-            self[Property] = cloneref(Service);
-            return Service
-        end
-    end
+	__index = function(self, Property)
+		local Good, Service = pcall(GetService, game, Property);
+		if (Good) then
+			self[Property] = cloneref(Service);
+			return Service
+		end
+	end
 });
 
 local GetPlayers = Services.Players.GetPlayers
 local JSONEncode, JSONDecode, GenerateGUID = 
-    Services.HttpService.JSONEncode, 
-    Services.HttpService.JSONDecode,
-    Services.HttpService.GenerateGUID
+	Services.HttpService.JSONEncode, 
+Services.HttpService.JSONDecode,
+Services.HttpService.GenerateGUID
 
 local GetPropertyChangedSignal, Changed = 
-    game.GetPropertyChangedSignal,
-    game.Changed
+	game.GetPropertyChangedSignal,
+game.Changed
 
 local GetChildren, GetDescendants = game.GetChildren, game.GetDescendants
 local IsA = game.IsA
 local FindFirstChild, FindFirstChildWhichIsA, WaitForChild = 
-    game.FindFirstChild,
-    game.FindFirstChildWhichIsA,
-    game.WaitForChild
+	game.FindFirstChild,
+game.FindFirstChildWhichIsA,
+game.WaitForChild
 
 local Tfind, sort, concat, pack, unpack;
 do
-    local table = table
-    Tfind, sort, concat, pack, unpack = 
-        table.find, 
-        table.sort,
-        table.concat,
-        table.pack,
-        table.unpack
+	local table = table
+	Tfind, sort, concat, pack, unpack = 
+		table.find, 
+	table.sort,
+	table.concat,
+	table.pack,
+	table.unpack
 end
 
 local lower, Sfind, split, sub, format, len, match, gmatch, gsub, byte;
 do
-    local string = string
-    lower, Sfind, split, sub, format, len, match, gmatch, gsub, byte = 
-        string.lower,
-        string.find,
-        string.split, 
-        string.sub,
-        string.format,
-        string.len,
-        string.match,
-        string.gmatch,
-        string.gsub,
-        string.byte
+	local string = string
+	lower, Sfind, split, sub, format, len, match, gmatch, gsub, byte = 
+		string.lower,
+	string.find,
+	string.split, 
+	string.sub,
+	string.format,
+	string.len,
+	string.match,
+	string.gmatch,
+	string.gsub,
+	string.byte
 end
 
 local random, floor, round, abs, atan, cos, sin, rad;
 do
-    local math = math
-    random, floor, round, abs, atan, cos, sin, rad, clamp = 
-        math.random,
-        math.floor,
-        math.round,
-        math.abs,
-        math.atan,
-        math.cos,
-        math.sin,
-        math.rad,
-        math.clamp
+	local math = math
+	random, floor, round, abs, atan, cos, sin, rad, clamp = 
+		math.random,
+	math.floor,
+	math.round,
+	math.abs,
+	math.atan,
+	math.cos,
+	math.sin,
+	math.rad,
+	math.clamp
 end
 
 local Instancenew = Instance.new
@@ -99,17 +99,17 @@ local CConnect = Connection.Connect
 
 local Disconnect;
 do
-    local CalledConnection = CConnect(Connection, function() end);
-    Disconnect = CalledConnection.Disconnect
+	local CalledConnection = CConnect(Connection, function() end);
+	Disconnect = CalledConnection.Disconnect
 end
 
 local Connections = {}
 local AddConnection = function(...)
-    local ConnectionsToAdd = {...}
-    for i = 1, #ConnectionsToAdd do
-        Connections[#Connections + 1] = ConnectionsToAdd[i]
-    end
-    return ...
+	local ConnectionsToAdd = {...}
+	for i = 1, #ConnectionsToAdd do
+		Connections[#Connections + 1] = ConnectionsToAdd[i]
+	end
+	return ...
 end
 
 local UIElements = Services.InsertService:LoadLocalAsset("rbxassetid://6945229203");
@@ -155,7 +155,7 @@ Utils.SmoothScroll = function(content, SmoothingFactor)
 	input.Parent = content.Parent
 
 	local function syncProperty(prop)
-        AddConnection(CConnect(GetPropertyChangedSignal(content, prop), function()
+		AddConnection(CConnect(GetPropertyChangedSignal(content, prop), function()
 			if prop == "ZIndex" then
 				input[prop] = content[prop] + 1
 			else
@@ -196,13 +196,13 @@ Utils.SmoothScroll = function(content, SmoothingFactor)
 end
 
 do
-    local TweenService = Services.TweenService
-    Utils.Tween = function(Object, Style, Direction, Time, Goal)
-        local TInfo = TweenInfo.new(Time, Enum.EasingStyle[Style], Enum.EasingDirection[Direction])
-        local Tween = TweenService.Create(TweenService, Object, TInfo, Goal)
-        Tween.Play(Tween);
-        return Tween
-    end
+	local TweenService = Services.TweenService
+	Utils.Tween = function(Object, Style, Direction, Time, Goal)
+		local TInfo = TweenInfo.new(Time, Enum.EasingStyle[Style], Enum.EasingDirection[Direction])
+		local Tween = TweenService.Create(TweenService, Object, TInfo, Goal)
+		Tween.Play(Tween);
+		return Tween
+	end
 end
 
 Utils.MultColor3 = function(Color, Delta)
@@ -226,8 +226,8 @@ Utils.Draggable = function(UI, DragUi)
 			Position = Position
 		});
 	end
-    local CoreGui = Services.CoreGui
-    local UserInputService = Services.UserInputService
+	local CoreGui = Services.CoreGui
+	local UserInputService = Services.UserInputService
 
 	AddConnection(CConnect(UI.InputBegan, function(Input)
 		if ((Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch) and not UserInputService.GetFocusedTextBox(UserInputService)) then
@@ -283,7 +283,7 @@ Utils.Click = function(Object, Goal)
 		Utils.Tween(Object, "Quad", "Out", .3, Press);
 	end));
 
-    AddConnection(CConnect(Object.MouseButton1Up, function()
+	AddConnection(CConnect(Object.MouseButton1Up, function()
 		Utils.Tween(Object, "Quad", "Out", .4, Hover);
 	end));
 end
@@ -317,8 +317,8 @@ Utils.Blink = function(Object, Goal, Color1, Color2, Time)
 
 	CThread(function()
 		local T1 = Utils.Tween(Object, "Quad", "Out", Time, Blink).Completed
-        T1.Wait(T1);
-        local T2 = Utils.Tween(Object, "Quad", "Out", Time, Normal);
+		T1.Wait(T1);
+		local T2 = Utils.Tween(Object, "Quad", "Out", Time, Normal);
 	end)()
 end
 
@@ -331,9 +331,9 @@ Utils.TweenTrans = function(Object, Transparency)
 		ImageLabel = "ImageTransparency"
 	}
 
-    local Descendants = GetDescendants(Object);
+	local Descendants = GetDescendants(Object);
 	for i = 1, #Descendants do
-        local Instance_ = Descendants[i]
+		local Instance_ = Descendants[i]
 		if (IsA(Instance_, "GuiObject")) then
 			for Class, Property in next, Properties do
 				if (IsA(Instance_, Class) and Instance_[Property] ~= 1) then
@@ -385,7 +385,7 @@ Utils.Intro = function(Object)
 			BackgroundTransparency = 0
 		});
 
-        CWait(Tween.Completed);
+		CWait(Tween.Completed);
 		Object.Visible = false
 
 		local Tween = Utils.Tween(Frame, "Quad", "Out", .25, {
@@ -425,7 +425,7 @@ end
 
 Utils.MakeGradient = function(ColorTable)
 	local Table = {}
-    local ColorSequenceKeypointNew = ColorSequenceKeypoint.new
+	local ColorSequenceKeypointNew = ColorSequenceKeypoint.new
 	for Time, Color in next, ColorTable do
 		Table[#Table + 1] = ColorSequenceKeypointNew(Time - 1, Color);
 	end
@@ -442,7 +442,7 @@ UILibrary.new = function(ColorTheme)
 	setmetatable(NewUI, UILibrary);
 	NewUI.UI = UI
 	NewUI.ColorTheme = ColorTheme
-	
+
 	return NewUI
 end
 
@@ -497,7 +497,7 @@ function UILibrary:LoadWindow(Title, Size)
 		if LeftWindow then
 			local Time = tick() - Timer
 			if Time >= 3 and not Idle then
-				Utils.TweenTrans(Window, .75);
+				Utils.TweenTrans(Window, .9);
 				Idle = true
 			end
 		end
